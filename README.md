@@ -9,7 +9,7 @@ Sankofa's Gift is an immersive game experience that embraces African heritage th
 ### Key Links
 
 - [GitHub Repository](https://github.com/DzidediSenaya/Sankofas-Gift)
-- [Final Project Blog Article]
+- [Final Project Blog Article]https://www.linkedin.com/posts/dzidedi-senaya-8432bb6b_blog-post-for-portfolio-project-activity-7143430356682129408-633s?utm_source=share&utm_medium=member_desktop
 - [Author's LinkedIn](https://www.linkedin.com/in/dzidedi-senaya-8432bb6b/)
 
 
@@ -76,5 +76,6 @@ The most significant technical challenge revolved around issues with my virtual 
 Looking ahead, I envision expanding Sankofa's Gift into a more sophisticated and visually appealing game. Incorporating advanced storytelling elements, diverse characters, and leveraging cutting-edge technologies will be key focus areas for the next iteration.
 
 ## Screenshots
-![Sankofa Banner](sankofa.jpg)
+![Sankofa Banner](https://github.com/DzidediSenaya/Sankofa-s_gift/blob/main/Sankofa.jpg)
+
 
