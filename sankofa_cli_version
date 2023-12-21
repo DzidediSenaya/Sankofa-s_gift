@@ -1,0 +1,155 @@
+import time
+import os
+
+# ANSI Escape Codes for Colors
+BLACK = "\033[0;30m"
+RED = "\033[0;31m"
+GREEN = "\033[0;32m"
+YELLOW = "\033[0;33m"
+BLUE = "\033[0;34m"
+MAGENTA = "\033[0;35m"
+CYAN = "\033[0;36m"
+WHITE = "\033[0;37m"
+RESET = "\033[0m"
+
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+def draw_text(text, color=WHITE):
+    print(f"{color}{text}{RESET}")
+
+def welcome_animation():
+    clear_screen()
+    art = """
+     Welcome to Sankofa's Gift!
+     _______   _______   __   __   __   __   _______ 
+    |       | |       | |  | |  | |  | |  | |       |
+    |  _____| |   _   | |  |_|  | |  | |  | |  _____|
+    | |_____  |  | |  | |       | |  |_|  | | |_____ 
+    |_____  | |  |_|  | |       | |       | |_____  |
+     _____| | |       | |       | |_______|  _____| |
+    |_______| |_______| |_______|           |_______|
+    """
+    draw_text(art, GREEN)
+    time.sleep(2)
+
+def welcome():
+    return input("Enter your name: ")
+
+def ask_for_sex():
+    while True:
+        sex = input("Choose your sex (press 'f' for female or 'm' for male): ").lower()
+        if sex in ('f', 'm'):
+            return "female" if sex == 'f' else "male"
+        else:
+            draw_text("Invalid input. Please enter 'f' or 'm'.")
+
+def daily_life(player_name, sex):
+    clear_screen()
+    draw_text(f"Good morning, {player_name}!")
+    if sex == "female":
+        draw_female()
+    elif sex == "male":
+        draw_male()
+    time.sleep(2)
+
+def get_starting_skill(sex):
+    return "mystical powers" if sex == "female" else "swordsmanship"
+
+def explore_forest():
+    while True:
+        response = input("You hear about a mysterious forest. Do you want to explore it? (y/n) ").lower()
+        if response == 'y':
+            return True
+        elif response == 'n':
+            return False
+        else:
+            draw_text("Invalid input. Please enter 'y' or 'n'.")
+
+def forest_encounter_animation():
+    clear_screen()
+    art = """
+    While exploring the forest, you encounter a wise elder named Ananse.
+     ___/\\_
+    ( o   o )
+       \\_
+    """
+    draw_text(art, CYAN)
+    time.sleep(2)
+
+def magical_seed_animation():
+    clear_screen()
+    art = """
+    Ananse presents you with a magical seed glowing with ancient energy.
+        *
+       / \\
+      / _ \\
+     | / \\ |
+     ||   ||
+     ||   ||
+    """
+    draw_text(art, YELLOW)
+    time.sleep(2)
+
+def moral_dilemma():
+    draw_text("Ananse instructs you to plant the magical seed wisely to bring prosperity to the village.")
+    draw_text("Press '1' to plant the seed in the village center")
+    draw_text("Press '2' to plant the seed in a hidden spot")
+    while True:
+        choice = input().lower()
+        if choice in ('1', '2'):
+            return "center" if choice == '1' else "hidden"
+        else:
+            draw_text("Invalid input. Please enter '1' or '2'.")
+
+def good_ending(player_name):
+    draw_text(f"Congratulations, {player_name}! You planted the seed in the village center.")
+    draw_text("The magical tree flourishes, bringing harmony and prosperity to the entire village.", GREEN)
+    time.sleep(4)
+
+def not_so_good_ending(player_name):
+    draw_text(f"Unfortunately, {player_name}, your choice has consequences.")
+    draw_text("The magic goes awry, causing unexpected challenges in the village.", RED)
+    time.sleep(4)
+
+def draw_male():
+    art = """
+      ____
+     | o o\\
+     |  > )
+     |__|__|
+    """
+    draw_text(art, BLUE)
+
+def draw_female():
+    art = """
+      ____
+     | oo |
+     | > >|
+     |__|__|
+    """
+    draw_text(art, MAGENTA)
+
+def main():
+    welcome_animation()
+    player_name = welcome()
+    sex = ask_for_sex()
+    daily_life(player_name, sex)
+
+    if explore_forest():
+        forest_encounter_animation()
+        magical_seed_animation()
+        choice = moral_dilemma()
+
+        if choice == "center":
+            good_ending(player_name)
+        elif choice == "hidden":
+            not_so_good_ending(player_name)
+
+    else:
+        draw_text("You decide to stay in the village and continue with your daily activities.")
+        draw_text("The game concludes with a reflection on the importance of choices.", WHITE)
+        time.sleep(4)
+
+if __name__ == "__main__":
+    main()
